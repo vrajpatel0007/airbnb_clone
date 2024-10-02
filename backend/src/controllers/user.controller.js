@@ -40,9 +40,8 @@ const profile = async (req, res) => {
   try {
     const user = await user_service.findId(req.user._id);
     console.log("🚀 ~ profile ~ user:", user);
-    if (user.Active != "Active") {
-      console.log("🚀 ~ profile ~ user.Active:", user.Active)
-      return res.status(403).json({ message: "User is inActive" });
+    if (!user) {
+      return res.status(403).json({ message: "User not found" });
     }
     return res.status(200).json({ message: "User Profile", user: user });
   } catch (error) {

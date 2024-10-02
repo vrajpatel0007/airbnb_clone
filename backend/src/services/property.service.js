@@ -12,9 +12,17 @@ const propertybyid = async (bookingData) => {
     return await Property.findById(bookingData.property);
 }
 
+const Propertie = async (id) => {
+    return await Property.findById(id);
+}
+const deletePropertie = async (id) => {
+    return await Property.findByIdAndDelete(id);
+}
 
 module.exports = {
     createProperty,
     getAllProperties,
-    propertybyid
+    propertybyid,
+    Propertie,
+    deletePropertie
 }
